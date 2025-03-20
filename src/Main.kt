@@ -29,8 +29,14 @@ private fun menu() {
                 listar(convidado)
             }
 
-            3 -> println("Editar...")
-            4 -> println("Excluindo...")
+            3 -> {
+                println("Editar...")
+                editar()
+            }
+            4 -> {
+                println("Excluindo...")
+                excluir()
+            }
             0 -> println("Saindo...")
             else -> println("Opção inválida. Tente novamente.")
         }
@@ -53,8 +59,6 @@ private fun cadastrar(): Convidado {
     //val alimento = readln()
     convidado.alimento = readln()
 
-    convidado.presenca = true
-
     return convidado
 }
 
@@ -65,4 +69,21 @@ private fun listar(convidado: Convidado) {
                 "Restrição: ${convidado.alimento}\n" +
                 "Vai ir na festa: ${convidado.presenca}"
     )
+}
+
+private fun editar() {
+    println("O convidado vai? S/N")
+    val resposta = readln()
+    when (resposta) {
+        "S"-> convidado.presenca = true
+        "N"-> convidado.presenca = false
+    }
+}
+
+private fun excluir(){
+    convidado.nome = ""
+    convidado.alimento = ""
+    convidado.presente = ""
+    convidado.presenca = false
+    print("Convidado exluido")
 }
